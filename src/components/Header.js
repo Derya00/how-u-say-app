@@ -1,16 +1,39 @@
-import React from 'react'
+import React, { Component } from 'react'
 
  const context = {
      title : 'How u say is a language learning app',
-     subTitles: ['Click start when you are ready']
+     subTitles: ['Challenge is Fun...', 'Logic is the key to learning...', 'Just try and enjoy....']
    };
-{/* <h1>{title}</h1>
-<h2>{subTitles[0]}</h2> */}
+
+/*
+export default class Header extends Component {
+    constructor(props) {
+        super(props);
+        
+		this.state = {
+            title: context.title,
+			subTitle: context.subTitles[props.init]
+        };
+        
+    };
+    
+	render() {
+	  return (
+	  	<div>
+			<h1>{this.state.title}</h1>
+            <p>{this.state.subTitle}</p> 
+	  	</div>
+	  );
+	};
+}
+
+*/
+
 export const Header = (props) => {
     return (
         <div>
-             <h1>{context.title}</h1>
-             <p>{context.subTitles[props.init]}</p> 
-        </div>                    
+            <h1>{context.title}</h1>
+            <p>{context.subTitles[props.init]}</p> 
+      </div>
     )
-}
+ }

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { Button } from './Button'
+import Excercise from './Excercise'
+
 // http://www.mocky.io/v2/5b5c0d843200007b0042626e
 const jsonResponse = {
 	"challanges": [{
@@ -48,22 +51,34 @@ const jsonResponse = {
 		}
 	]
 };
+const section = jsonResponse.sections[0];
 
 export default class Level1 extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			name: "Fish 2"
-		};
+		this.state = {};
+		this.getChallanges = this.getChallanges.bind(this);
 	};
 
+	getChallanges(id){
+		this.state.challangeList = jsonResponse.challanges.find(chalange => {
+			return chalange.sectionId === id;
+		});
+		this.setState(this.state.challangeList);
+	}
 	render() {
-	  return (
-	  	<div>
-			Fish 2
-	  	</div>
-	  );
+		return (
+		<div>
+		<div>{section.from}</div>
+		<div>{section.to}</div>
+		<Button name='ready?' onClick={() => this.getChallanges(section.id)} /> 
+		{
+			!!this.state.challangeList ?
+			<Excercise challanges={this.state.challangeList} />
+			: 
+			''
+		}
+		</div>
+		);
 	};
-  }
-
- 
+}
