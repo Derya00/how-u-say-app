@@ -28,23 +28,22 @@ class Language extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      currentContent: mainStates[0],
-      contents: mainStates
+      currentContent: mainStates[0]
     }
     this.getContent = this.getContent.bind(this);
   };
 
   getContent(id){
-   const next = id < this.state.contents.length - 1 ? id + 1 : 0;
-   this.state.currentContent = this.state.contents[next];
-   this.setState(this.state.currentContent);
+   const inx = id < mainStates.length - 1 ? id + 1 : 0;
+   const next = mainStates[inx];
+   this.setState({ currentContent: next });
   }
 
   render() {
     return (
         <div>
-          <Header init={this.state.currentContent.stateId}/>
-          <p>{this.state.currentContent.desc}</p>         
+          <Header init={this.state.currentContent.stateId}/> 
+          <p> {this.state.currentContent.desc} </p>        
           {
             this.state.currentContent.stateId > 0 ?
               <Level1 stateId={this.state.currentContent.stateId}/> 
